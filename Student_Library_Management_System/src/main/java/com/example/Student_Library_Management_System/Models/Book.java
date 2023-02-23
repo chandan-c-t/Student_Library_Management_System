@@ -3,6 +3,9 @@ package com.example.Student_Library_Management_System.Models;
 import com.example.Student_Library_Management_System.Enums.Genre;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="book")
 public class Book {
@@ -15,6 +18,8 @@ public class Book {
 
     private int pages;
 
+   private boolean isIssued;
+
     @Enumerated(value=EnumType.STRING)
     private Genre genre;
 
@@ -26,7 +31,26 @@ public class Book {
     @JoinColumn
     private Card card;
 
+    @OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
+    private List<Transaction> transactionList = new ArrayList<>();
+
     public Book() {
+    }
+
+    public boolean isIssued() {
+        return isIssued;
+    }
+
+    public void setIssued(boolean issued) {
+        isIssued = issued;
+    }
+
+    public List<Transaction> getTransactionList() {
+        return transactionList;
+    }
+
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
     }
 
     public int getId() {

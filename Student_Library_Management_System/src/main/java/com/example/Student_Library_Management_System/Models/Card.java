@@ -41,7 +41,18 @@ public class Card {
     @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
     private List<Book> booksIssued = new ArrayList<>();
 
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
+    private List<Transaction> transactions = new ArrayList<>();
+
     public Card() {
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
     public List<Book> getBooksIssued() {

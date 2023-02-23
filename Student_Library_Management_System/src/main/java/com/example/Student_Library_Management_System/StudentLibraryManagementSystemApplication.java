@@ -10,4 +10,5 @@ public class StudentLibraryManagementSystemApplication {
 		SpringApplication.run(StudentLibraryManagementSystemApplication.class, args);
 	}
 
+
 }
